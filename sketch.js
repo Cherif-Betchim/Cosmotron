@@ -1,7 +1,7 @@
 var camera; //variable qui définit la webcam
 var canvas; //l'endroit où on peut dessiner
-var largeur = 400 //définit la largeur du canvas / image
-var hauteur= 400 //définit la hauteur du canvas / image
+var largeur = 0 //définit la largeur du canvas / image
+var hauteur= 0 //définit la hauteur du canvas / image
 var Imagedefond // Définit l'image /vidéo du fond 
 var seuil = parseFloat( localStorage.getItem("seuil") ) // Quand distance couleurfond est assez proche, on change l'image
 var couleurfond =[
@@ -19,39 +19,40 @@ var button1
 var button2
 var buttonvisible=true
 var sliderchange
-var date=newDate
+//var date=new Date
 var NOMDEFICHIER
 
 function setup() { 
   canvas = createCanvas(); // Creer une zone pour dessiner
-  canvas.size(largeur,hauteur) //Taille de la zone à dessiner
+  camera = createCapture(VIDEO); // Active la webcam
+  
+
+  //canvas.size(largeur,hauteur) //Taille de la zone à dessiner
   Imagedefond = loadImage ("Medias/b.jpg") // Integre une video
   //Imagedefond.hide() // Cacher l'image de base
-  camera = createCapture(VIDEO); // Active la webcam
-  camera.size(largeur, hauteur); // Taille de la webcam
+  
+  //camera.size(largeur, hauteur); // Taille de la webcam
   seuilSlider = createSlider(0,255,seuil) // Creer un slider 
-  seuilSlider.position(20, 40) //Positionne le slider
+
   pixelDensity(1) // Densité du pixel
   //Imagedefond.stop() // Lance en boucle la vidéo / Stop la video
   camera.hide(); // Supprimer la webcam de base
   frameRate(20); // Changer le framerate (Image par seconde)
   //Imagedefond.loop()
  
-  button = createButton('smile')
-  button.mousePressed(comptearebours)
-  button.position(1,200)
-  textSize(32)
-  button1 = createButton('next')
+  button = createImg('Medias/smile.png','smile')
+  button.mousePressed(comptearebours)  
+  button1 = createImg('Medias/next.png','next')
   button1.mousePressed(suivant)
-  button1.position(1,230)
-  button2 =createButton('hide')
-  button2.mousePressed(hideshow)
-  button2.position(80,1)
+  button2 =createImg('Medias/hide.png','hide')
+  button2.mouseClicked(hideshow)  
   seuilSlider.input(sliderchange)
-  button3 = createButton("pleinEcran")
-  button3.position(1, 260)
+  button3 = createImg('Medias/fullscreen1.png',"pleinEcran")
   button3.mousePressed(pleinEcran)
-  windowResized()
+  textSize(200)
+
+
+   windowResized()// doit etre appelée en dernier
 
 }
 
@@ -72,7 +73,8 @@ function draw() { // Dessine chaque image
 
   
 
- function hideshow(){
+ function hideshow(e){
+   console.log(e)
    if(buttonvisible==true){
      button1.hide()
      button.hide()
@@ -218,10 +220,32 @@ function sliderchange(){
    hauteur = windowHeight
    canvas.size(largeur,hauteur)
    camera.size(largeur,hauteur)
-
+   positionner_button()
  }
 function pleinEcran() {
     var fs = fullscreen();
     fullscreen(!fs);
 
+
+}
+
+function positionner_button(){
+  var cotesmile = hauteur/5
+  button.size(cotesmile,cotesmile)
+
+  button.position(largeur/2-button.width/2,hauteur-button.height-2)
+   var cotesmile1=hauteur/8
+   button1.position(largeur-cotesmile1,hauteur-cotesmile1) 
+  button1.size(cotesmile1,cotesmile1)
+   var cotesmile2= hauteur/8
+  button2.position(80,1)
+  button2.size(cotesmile2,cotesmile2)
+   var cotesmile3=hauteur/8
+  button3.size(cotesmile3,cotesmile3)
+  button3.position(0 , hauteur-button3.height)
+  
+  
+
+    seuilSlider.size(400,50)
+  seuilSlider.position(largeur/2-seuilSlider.width/2, 40) //Positionne le slider
 }
