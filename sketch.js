@@ -137,7 +137,7 @@ function Save(){ // Fonction sauvegarde
 
 function mouseClicked(e) { // Reagit au clic
   if(e.srcElement==canvas.canvas){ // Si le clic se situe dans la zone dessinable
-  const position1d = (Math.floor(mouseY)*largeur+Math.floor(mouseX))*4 // Localise le clic
+  const position1d = (Math.floor(mouseY*largeur*resolution)+Math.floor(mouseX*resolution))*4 // Localise le clic
   couleurfond[0]=camera.pixels [position1d+0]
   couleurfond[1]=camera.pixels [position1d+1]
   couleurfond[2]=camera.pixels [position1d+2]
