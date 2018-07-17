@@ -1,0 +1,26 @@
+
+Bonjour,
+
+
+si tu lis ce message c'est que tu veut utliser le photomaton ! 
+
+
+c'est un un programme qui sert à changer le fond de l'image ou d'y inserer une vidéo,
+
+tout d'abord télècharge l'application de google chrome qui s'apelle WEB SERVER FOR CHROME,
+
+ensuite charge ton dossier(cosmotron) dans cette application et clique sur l'url, et ouvre le dosier source
+
+sayer!! tu l'a ouvert maitenant apuie sur f12,
+
+apuiiie sur le bouton il te sert à prendre une photo 
+
+ATTENTION il y a un decompte de 5 secondes
+
+en haut tu peut voir un variateur il peut bouger il te permet de pouvoir varier l'affichaage de ton image de fond et ta cam,
+
+grâce au curseur de ta souris tu peut supprimer des couleurs et faire afficher les couleurs de l'autre image.
+
+voila c'est terminer tu à pris ta photo ???
+
+merci myriam qui à fait t out le travail pour ça!!!!!!!!!!
