@@ -21,6 +21,8 @@ var buttonvisible=true
 var sliderchange
 //var date=new Date
 var NOMDEFICHIER
+var resolution =1
+
 
 function setup() { 
   canvas = createCanvas(); // Creer une zone pour dessiner
@@ -49,11 +51,28 @@ function setup() {
   seuilSlider.input(sliderchange)
   button3 = createImg('Medias/fullscreen1.png',"pleinEcran")
   button3.mousePressed(pleinEcran)
+  button4 = createSelect();
+  button4.option("HD")
+  button4.option("SD")
+  button4.changed(changeResolution)
   textSize(200)
 
 
    windowResized()// doit etre appelée en dernier
 
+}
+
+function changeResolution(){
+var choix = button4.value()
+
+if (choix=="HD"){
+  resolution=1
+}
+else if(choix=="SD") {
+  resolution=0.2
+}
+
+windowResized()
 }
 
 function draw() { // Dessine chaque image
@@ -216,7 +235,7 @@ function sliderchange(){
    localStorage.setItem("seuil",""+seuil)
  }
  function windowResized(){
-   var resolution =1/2
+   
    largeur = windowWidth
    hauteur = windowHeight
    canvas.size(largeur*resolution,hauteur*resolution)
@@ -247,7 +266,8 @@ function positionner_button(){
   button3.size(cotesmile3,cotesmile3)
   button3.position(0 , hauteur-button3.height)
   
-  
+  button4.position(0,hauteur/2)
+  button4.size(100,50)
 
     seuilSlider.size(400,100)
   seuilSlider.position(largeur/2-seuilSlider.width/2, 40) //Positionne le slider
