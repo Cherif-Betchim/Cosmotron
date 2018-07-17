@@ -168,8 +168,8 @@ if (camera.width == 0 && camera.imageData) {
      camera.loadPixels(); // Charge les pixel de la webcam
   if(camera.pixels.length){ // Etre sur que la caméra est chargée
  
-    const w = largeur; // Variable raccourcis pour largeur
-    const h = hauteur; // Variable raccourcis pour hauteur
+    const w = canvas.width; // Variable raccourcis pour largeur
+    const h = canvas.height; // Variable raccourcis pour hauteur
 
     for (let i = 0; i < w; i=i+1) { // On se balade sur les colonnes
       for (let j = 0; j < h; j++) { // On se balade sur les lignes
@@ -216,10 +216,13 @@ function sliderchange(){
    localStorage.setItem("seuil",""+seuil)
  }
  function windowResized(){
+   var resolution =1/2
    largeur = windowWidth
    hauteur = windowHeight
-   canvas.size(largeur,hauteur)
-   camera.size(largeur,hauteur)
+   canvas.size(largeur*resolution,hauteur*resolution)
+   camera.size(largeur*resolution,hauteur*resolution)
+   canvas.canvas.style.width = largeur+"px"
+   canvas.canvas.style.height = hauteur+"px"
    positionner_button()
  }
 function pleinEcran() {
@@ -246,6 +249,6 @@ function positionner_button(){
   
   
 
-    seuilSlider.size(400,50)
+    seuilSlider.size(400,100)
   seuilSlider.position(largeur/2-seuilSlider.width/2, 40) //Positionne le slider
 }
