@@ -12,7 +12,7 @@ parseFloat( localStorage.getItem("cfv") )  ,
  ]; // Définit la couleur de fond comme vert
 var value = 0
 var secondesCR=5
-var listimage=["Medias/a.jpg","Medias/b.jpg","Medias/c.jpg","Medias/d.jpg","Medias/e.png"]
+var listimage=["Medias/a.jpg","Medias/b.jpg","Medias/c.jpg","Medias/d.jpg","Medias/e.png","Medias/jcvd.jpg"]
 var positionlist=0
 var button
 var button1
