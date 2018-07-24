@@ -24,6 +24,28 @@ var NOMDEFICHIER
 var resolution =1
 
 
+
+
+/// Partie video générative
+var L =700
+var H = 700
+var deplacementX = []; 
+var deplacementY = [];
+var speed = [];
+var direction = [];
+var Nombre = 15
+var rouge_etoile = [];
+var vert_etoile = [];
+var bleu_etoile = [];
+var directionX = [];
+var directionY = [];
+var speedX = [];
+var speedY = [];
+var Taille = []
+
+
+
+
 function setup() { 
   canvas = createCanvas(); // Creer une zone pour dessiner
   camera = createCapture(VIDEO); // Active la webcam
@@ -41,6 +63,7 @@ function setup() {
   camera.hide(); // Supprimer la webcam de base
   frameRate(20); // Changer le framerate (Image par seconde)
   //Imagedefond.loop()
+  setupStars();
  
   button = createImg('Medias/smile.png','smile')
   button.mousePressed(comptearebours)  
@@ -84,10 +107,12 @@ function draw() { // Dessine chaque image
   loadPixels(); // Charge les pixel
   dessinerCamera() // Dessine la webcam
   updatePixels(); // Permet de charger les pixel en mouvement.
+  drawStars();
+
   if(secondesCR!=5 && secondesCR!=1){
-  var character =''+secondesCR 
-  text(character,largeur-25,25)
- }
+    var character =''+secondesCR 
+    text(character,largeur-25,25)
+  }
 }
 
   
